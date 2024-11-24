@@ -2,7 +2,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import CanvasLoader from '../components/Loading.jsx';
-import { workExperiences } from '../constants/index.js';
+import { workExperiences } from '../constants/Index.js';
 import Ownavatar from '../components/Ownavatar.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // AOS library for scroll animations

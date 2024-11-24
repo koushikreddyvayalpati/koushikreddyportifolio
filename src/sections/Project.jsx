@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { myProjects } from '../constants';
+import { myProjects } from '../constants/Index.js';
 
 const Project = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
