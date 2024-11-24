@@ -1,14 +1,37 @@
+import { useEffect, useState } from 'react';
 import { clientReviews } from '../constants/index.js';
 
 const Clients = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Use Intersection Observer to trigger fade-in effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    const element = document.querySelector('.client-container');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="c-space my-20">
       <h3 className="head-text">Insights from Clients & Colleagues</h3>
 
-      <div className="client-container">
+      <div className={`client-container ${isVisible ? 'fade-in' : ''}`}>
         {clientReviews.map((item) => (
           <div key={`review-${item.id}`} className="client-review">
-            <div>
+            <div className="review-content">
               <p className="text-white-800 font-light">{item.review}</p>
 
               <div className="client-content">

@@ -20,7 +20,7 @@ const Project = () => {
 
   return (
     <section className="c-space my-20" id="project">
-      <p className="head-text">Project work</p>
+      <p className="head-text">Project Work</p>
 
       <div className="carousel-container">
         <div className="carousel-content">
@@ -35,6 +35,7 @@ const Project = () => {
                 style={{
                   transform: `rotateY(${offset * 60}deg) translateZ(400px)`,
                   opacity: isActive ? 1 : 0.5,
+                  transition: 'transform 0.5s ease, opacity 0.5s ease',
                 }}
               >
                 <div className="carousel-item">
@@ -44,19 +45,18 @@ const Project = () => {
                     className="carousel-image"
                   />
                   {isActive && (
-                  <div className="carousel-info">
-                    
-                    <p className='project-titlee'>{project.title}</p>
-                    <p className="project-desc">{project.desc}</p>
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="live-site-link"
-                    >
-                      Click here for more info
-                    </a>
-                  </div>
+                    <div className="carousel-info">
+                      <p className="project-title">{project.title}</p>
+                      <p className="project-desc">{project.desc}</p>
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="live-site-link"
+                      >
+                        Click here for more info
+                      </a>
+                    </div>
                   )}
                 </div>
               </div>
@@ -65,11 +65,17 @@ const Project = () => {
         </div>
 
         <div className="carousel-nav">
-          <button className="arrow-btn" onClick={() => handleNavigation('previous')}>
+          <button
+            className="arrow-btn prev-btn"
+            onClick={() => handleNavigation('previous')}
+          >
             &#8592;
           </button>
 
-          <button className="arrow-btn" onClick={() => handleNavigation('next')}>
+          <button
+            className="arrow-btn next-btn"
+            onClick={() => handleNavigation('next')}
+          >
             &#8594;
           </button>
         </div>
