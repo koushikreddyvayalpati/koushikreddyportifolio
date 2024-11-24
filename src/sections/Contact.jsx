@@ -4,7 +4,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import CanvasLoader from '../components/Loading.jsx';
 import useAlert from '../hooks/useAlert';
-import Alert from '../components/alert';
+import Alert from '../components/Alert';
 import Snowdragon from '../components/Snowdragon';
 
 const Contact = () => {
