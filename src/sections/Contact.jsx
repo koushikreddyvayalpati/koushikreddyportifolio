@@ -1,24 +1,32 @@
 import emailjs from '@emailjs/browser';
-import { useRef, useState } from 'react';
-
+import { useRef, useState, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import CanvasLoader from '../components/Loading.jsx';
 import useAlert from '../hooks/useAlert';
 import Alert from '../components/alert';
+import Snowdragon from '../components/Snowdragon';
+
 const Contact = () => {
   const formRef = useRef();
-
   const { alert, showAlert, hideAlert } = useAlert();
   const [loading, setLoading] = useState(false);
-
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-// service_k28wzwt
+  const [currentAnimation, setCurrentAnimation] = useState("stand");
+
   const handleChange = ({ target: { name, value } }) => {
     setForm({ ...form, [name]: value });
   };
 
+  const handleFocus = () => setCurrentAnimation("atk01");
+  const handleBlur = () => setCurrentAnimation("stand");
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
+    setCurrentAnimation("skill02");
+setTimeout(() => {
     emailjs
       .send(
         'service_k28wzwt',
@@ -35,9 +43,10 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
+          setCurrentAnimation("stand");
           showAlert({
             show: true,
-            text: ' Thank I have recived your message 😃',
+            text: 'Thank you, I have received your message! 😃',
             type: 'success',
           });
 
@@ -48,33 +57,60 @@ const Contact = () => {
               email: '',
               message: '',
             });
-          }, [3000]);
+          }, 3000);
         },
         (error) => {
           setLoading(false);
+          setCurrentAnimation("deaddown");
           console.error(error);
 
           showAlert({
             show: true,
-            text: "Sorry I didn't receive your message 😢",
+            text: "Sorry, I didn't receive your message 😢",
             type: 'danger',
           });
         },
+        
       );
+    }, 2000);
   };
 
   return (
     <section className="c-space my-20" id="contact">
       {alert.show && <Alert {...alert} />}
+      <div className="contact-container">
+        {/* Left: 3D Model */}
+        <div className="contact-canvas">
+          <Canvas>
+          
+            <ambientLight intensity={0.6} />
+            <hemisphereLight intensity={0.3} color="#ffffff" groundColor="#ffffff" />
+            <directionalLight
+        castShadow
+        intensity={2.7} // Direct intensity
+        color="#ffffff" // Direct color
+        position={[10, 10, 10]} // Position of the light source
+      />
+            {/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} /> */}
+            <Suspense fallback={<CanvasLoader />}>
+              <PerspectiveCamera makeDefault position={[0, 1, 5]} />
+              <OrbitControls
+                autoRotate={false}
+                autoRotateSpeed={2.0}
+                enableZoom={false}
+                maxPolarAngle={Math.PI / 2}
+                enablePan={false}
+              />
+              <Snowdragon currentAnimation={currentAnimation} scale={1.5} position={[-0.3, -1, 0]} rotation={[0, 0, 0]}/>
+            </Suspense>
+          </Canvas>
+        </div>
 
-      <div className="relative min-h-screen flex items-center justify-center flex-col">
-        {/* <img src="/assets/terminal.png" alt="terminal-bg" className="absolute inset-0 min-h-screen" /> */}
-
-        <div className="contact-container">
-          <h3 className="head-text">Let's talk</h3>
+        {/* Right: Form */}
+        <div className="contact-form">
+          <h3 className="head-text mt-10">Reach me</h3>
           <p className="text-lg text-white-600 mt-3">
-          If you want to create responsive web applications with React.js, develop seamless mobile apps using React Native,
-           or elevate your current platform, I’m here to bring your vision to life.
+          Send a message, and let's embark on a collaborative journey toward new beginnings!
           </p>
 
           <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
@@ -85,6 +121,8 @@ const Contact = () => {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 required
                 className="field-input"
                 placeholder="ex., mahesh"
@@ -98,6 +136,8 @@ const Contact = () => {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 required
                 className="field-input"
                 placeholder="ex., maheshbabu@gmail.com"
@@ -110,6 +150,8 @@ const Contact = () => {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
                 required
                 rows={5}
                 className="field-input"
@@ -117,9 +159,9 @@ const Contact = () => {
               />
             </label>
 
-            <button className="field-btn" type="submit" disabled={loading}>
+            <button className="field-btn" type="submit" disabled={loading} onFocus={handleFocus}
+            onBlur={handleBlur}>
               {loading ? 'Sending...' : 'Send Message'}
-
               <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
             </button>
           </form>

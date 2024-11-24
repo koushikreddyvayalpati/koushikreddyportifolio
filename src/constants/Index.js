@@ -28,15 +28,15 @@ export const navLinks = [
       position: 'Master Student at SUNY Buffalo',
       img: 'assets/upeketi.png',
       review:
-        'Working with Koushik was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.',
+        "Koushik was an excellent collaborator during our master's project. He consistently demonstrated strong problem-solving skills and a deep understanding of the project requirements. His contributions were pivotal in delivering our goals, and he always maintained a positive and professional attitude. It was a pleasure working alongside him.",
     },
     {
       id: 2,
-      name: 'Raunak Thapliyal',
-      position: 'Application Engineer at IDFC',
-      img: 'raunak.png',
+      name: 'Satyanand Singh',
+      position: 'Engineering manager at IDFC',
+      img: 'satya.jpeg',
       review:
-        'Koushik’s expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional! Fantastic work.',
+        ' Koushik is a highly skilled developer who played a key role in developing new features for the payments mobile UI at IDFC First Bank. His technical expertise and dedication helped improve user experience. He collaborates effectively with the team and consistently delivers high-quality solutions. A valuable asset to any team, Koushiks contributions have made a lasting impact.'
     },
     {
       id: 3,
@@ -51,7 +51,7 @@ export const navLinks = [
       position: 'CEO of Smart Gig Technologies',
       img: 'maheshnayani.png',
       review:
-        'Collaborating with Koushik at Smargig Technologies was a fantastic experience. He not only grasped our requirements with precision but also delivered a website that surpassed all expectations. His exceptional skills in both frontend and backend development set him apart as a standout professional.',
+        'Collaborating with Koushik at Smartgig Technologies was a fantastic experience. He not only grasped our requirements with precision but also delivered a website that surpassed all expectations. His exceptional skills in both frontend and backend development set him apart as a standout professional.',
     },
   ];
   
