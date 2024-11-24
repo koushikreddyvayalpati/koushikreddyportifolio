@@ -21,57 +21,55 @@ const Contact = () => {
   const handleFocus = () => setCurrentAnimation("atk01");
   const handleBlur = () => setCurrentAnimation("stand");
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     setCurrentAnimation("skill02");
-setTimeout(() => {
-    emailjs
-      .send(
-        'service_k28wzwt',
-        'template_t9vzd4s',
-        {
-          from_name: form.name,
-          to_name: 'Koushik reddy',
-          from_email: form.email,
-          to_email: 'koushikreddyvayalpati@gmail.com',
-          message: form.message,
-        },
-        'Z1IiKqd9FNW9gq0SQ',
-      )
-      .then(
-        () => {
-          setLoading(false);
-          setCurrentAnimation("stand");
-          showAlert({
-            show: true,
-            text: 'Thank you, I have received your message! 😃',
-            type: 'success',
-          });
-
-          setTimeout(() => {
-            hideAlert(false);
-            setForm({
-              name: '',
-              email: '',
-              message: '',
+    setTimeout(() => {
+      emailjs
+        .send(
+          'service_k28wzwt',
+          'template_t9vzd4s',
+          {
+            from_name: form.name,
+            to_name: 'Koushik reddy',
+            from_email: form.email,
+            to_email: 'koushikreddyvayalpati@gmail.com',
+            message: form.message,
+          },
+          'Z1IiKqd9FNW9gq0SQ',
+        )
+        .then(
+          () => {
+            setLoading(false);
+            setCurrentAnimation("stand");
+            showAlert({
+              show: true,
+              text: 'Thank you, I have received your message! 😃',
+              type: 'success',
             });
-          }, 3000);
-        },
-        (error) => {
-          setLoading(false);
-          setCurrentAnimation("deaddown");
-          console.error(error);
 
-          showAlert({
-            show: true,
-            text: "Sorry, I didn't receive your message 😢",
-            type: 'danger',
-          });
-        },
-        
-      );
+            setTimeout(() => {
+              hideAlert(false);
+              setForm({
+                name: '',
+                email: '',
+                message: '',
+              });
+            }, 3000);
+          },
+          (error) => {
+            setLoading(false);
+            setCurrentAnimation("deaddown");
+            console.error(error);
+
+            showAlert({
+              show: true,
+              text: "Sorry, I didn't receive your message 😢",
+              type: 'danger',
+            });
+          },
+        );
     }, 2000);
   };
 
@@ -82,16 +80,14 @@ setTimeout(() => {
         {/* Left: 3D Model */}
         <div className="contact-canvas">
           <Canvas>
-          
             <ambientLight intensity={0.6} />
             <hemisphereLight intensity={0.3} color="#ffffff" groundColor="#ffffff" />
             <directionalLight
-        castShadow
-        intensity={2.7} // Direct intensity
-        color="#ffffff" // Direct color
-        position={[10, 10, 10]} // Position of the light source
-      />
-            {/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} /> */}
+              castShadow
+              intensity={2.7} // Direct intensity
+              color="#ffffff" // Direct color
+              position={[10, 10, 10]} // Position of the light source
+            />
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 1, 5]} />
               <OrbitControls
@@ -101,7 +97,7 @@ setTimeout(() => {
                 maxPolarAngle={Math.PI / 2}
                 enablePan={false}
               />
-              <Snowdragon currentAnimation={currentAnimation} scale={1.5} position={[-0.3, -1, 0]} rotation={[0, 0, 0]}/>
+              <Snowdragon currentAnimation={currentAnimation} scale={1.5} position={[-0.3, -1, 0]} rotation={[0, 0, 0]} />
             </Suspense>
           </Canvas>
         </div>
@@ -110,7 +106,7 @@ setTimeout(() => {
         <div className="contact-form">
           <h3 className="head-text mt-10">Reach me</h3>
           <p className="text-lg text-white-600 mt-3">
-          Send a message, and let's embark on a collaborative journey toward new beginnings!
+            Send a message, and let's embark on a collaborative journey toward new beginnings!
           </p>
 
           <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
@@ -150,8 +146,8 @@ setTimeout(() => {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 required
                 rows={5}
                 className="field-input"
@@ -159,8 +155,7 @@ setTimeout(() => {
               />
             </label>
 
-            <button className="field-btn" type="submit" disabled={loading} onFocus={handleFocus}
-            onBlur={handleBlur}>
+            <button className="field-btn" type="submit" disabled={loading} onFocus={handleFocus} onBlur={handleBlur}>
               {loading ? 'Sending...' : 'Send Message'}
               <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
             </button>

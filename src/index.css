@@ -333,18 +333,55 @@ body {
   min-width: 300px; /* Ensures a minimum width for smaller screens */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 758px) {
   .contact-container {
-    flex-wrap: wrap; /* Allows items to stack vertically */
-  }
-
-  .contact-canvas,
-  .contact-form {
-    flex: 1 1 100%; /* Each section takes full width */
-    min-width: unset; /* Removes minimum width to avoid layout breaking */
+    flex-direction: column; /* Stack items vertically */
+    gap: 2rem;
   }
 
   .contact-canvas {
-    height: 400px; /* Adjust height for smaller screens */
+    width: 100%;
+    height: 40vh; /* Smaller canvas for mobile/tablet */
+  }
+
+  .contact-form {
+    width: 100%; /* Ensure the form takes full width */
+    text-align: center;
+  }
+
+  .field-btn {
+    width: 100%; /* Make the button take full width on smaller screens */
+  }
+
+  .field-input, textarea {
+    width: 100%; /* Make inputs full width */
+    padding: 12px;
+  }
+
+  .head-text {
+    font-size: 1.5rem; /* Adjust heading size */
+  }
+
+  .field-label {
+    font-size: 0.875rem; /* Adjust label size */
+  }
+
+  .field-btn_arrow {
+    width: 20px; /* Adjust the arrow size */
+  }
+}
+
+/* Mobile Specific */
+@media (max-width: 768px) {
+  .contact-canvas {
+    height: 300px; /* Even smaller canvas height on smaller mobile screens */
+  }
+  
+  .contact-form {
+    padding: 0 15px;
+  }
+
+  .field-btn {
+    font-size: 1rem;
   }
 }
