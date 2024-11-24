@@ -4,7 +4,7 @@ import { PerspectiveCamera ,Environment,} from '@react-three/drei';
 import Hackeroom from '../components/Hackeroom'; // Using your Hackeroom component
 import CanvasLoader from '../components/CanvasLoader';
 import { OrbitControls } from '@react-three/drei';
-import { calculateSizes } from '../constants/index.js';
+import { calculateSizes } from '../constants/Index.js';
 import Reactlogo from '../components/Reactlogo.jsx';
 import { useMediaQuery } from 'react-responsive';
 import Pythonlogo from '../components/Pythonlogo.jsx';

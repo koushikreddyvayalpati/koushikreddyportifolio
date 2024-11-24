@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { clientReviews } from '../constants/index.js';
+import { clientReviews } from '../constants/Index.js';
 
 const Clients = () => {
   const [isVisible, setIsVisible] = useState(false);
