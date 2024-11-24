@@ -29,7 +29,7 @@ export const navLinks = [
   export const clientReviews = [
     {
       id: 1,
-      name: 'Usha sree Peketi',
+      name: 'Usha Sree Peketi',
       position: 'Master Student at SUNY Buffalo',
       img: 'assets/upeketi.png',
       review:
