@@ -6,8 +6,11 @@ import CanvasLoader from '../components/Loading.jsx';
 import useAlert from '../hooks/useAlert';
 import Alert from '../components/alert';
 import Snowdragon from '../components/Snowdragon';
+import { useMediaQuery } from 'react-responsive';
+
 
 const Contact = () => {
+  const isSmallDevice = useMediaQuery({ maxWidth: 768 });
   const formRef = useRef();
   const { alert, showAlert, hideAlert } = useAlert();
   const [loading, setLoading] = useState(false);
@@ -77,7 +80,7 @@ const Contact = () => {
     <section className="c-space my-20" id="contact">
       {alert.show && <Alert {...alert} />}
       <div className="contact-container">
-        {/* Left: 3D Model */}
+        {!isSmallDevice ?
         <div className="contact-canvas">
           <Canvas>
             <ambientLight intensity={0.6} />
@@ -101,10 +104,11 @@ const Contact = () => {
             </Suspense>
           </Canvas>
         </div>
+:<p></p>}
 
         {/* Right: Form */}
-        <div className="contact-form">
-          <h3 className="head-text mt-10">Reach me</h3>
+        <div className="contact-form ">
+        <p className="grid-headtext text-4xl text-white-800 ">Reach Me !</p>
           <p className="text-lg text-white-600 mt-3">
             Send a message, and let's embark on a collaborative journey toward new beginnings!
           </p>

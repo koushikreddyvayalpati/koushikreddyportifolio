@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { myProjects } from '../constants';
 
 const Project = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
-
   const projectCount = myProjects.length;
+  const touchStartX = useRef(null);
+  const carouselRef = useRef(null);
 
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
@@ -16,13 +17,67 @@ const Project = () => {
     });
   };
 
-  const currentProject = myProjects[selectedProjectIndex];
+  // Mouse Click Navigation (For Larger Screens)
+  const handleMouseClick = (e) => {
+    const clickX = e.clientX;
+    const screenWidth = window.innerWidth;
+    const clickZone = screenWidth / 2;
+
+    if (clickX < clickZone) {
+      handleNavigation('previous'); // Clicked left
+    } else {
+      handleNavigation('next'); // Clicked right
+    }
+  };
+
+  // Keyboard Navigation (Arrow Keys)
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'ArrowLeft') {
+        handleNavigation('previous');
+      } else if (e.key === 'ArrowRight') {
+        handleNavigation('next');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, []);
+
+  // Touch event handlers (Already Present)
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    if (touchStartX.current === null) return;
+    
+    const touchCurrentX = e.touches[0].clientX;
+    const diff = touchStartX.current - touchCurrentX;
+
+    if (Math.abs(diff) > 50) {
+      handleNavigation(diff > 0 ? 'next' : 'previous');
+      touchStartX.current = null;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    touchStartX.current = null;
+  };
 
   return (
     <section className="c-space my-20" id="project">
-      <p className="head-text">Project Work</p>
+            <p className=" grid-headtext text-2xl text-white-800 ">Project Work</p>
 
-      <div className="carousel-container">
+
+      <div 
+        className="carousel-container" 
+        ref={carouselRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onClick={handleMouseClick} // Click support for desktops
+      >
         <div className="carousel-content">
           {myProjects.map((project, index) => {
             const offset = index - selectedProjectIndex;
@@ -62,22 +117,6 @@ const Project = () => {
               </div>
             );
           })}
-        </div>
-
-        <div className="carousel-nav">
-          <button
-            className="arrow-btn prev-btn"
-            onClick={() => handleNavigation('previous')}
-          >
-            &#8592;
-          </button>
-
-          <button
-            className="arrow-btn next-btn"
-            onClick={() => handleNavigation('next')}
-          >
-            &#8594;
-          </button>
         </div>
       </div>
     </section>

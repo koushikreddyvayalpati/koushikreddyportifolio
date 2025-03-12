@@ -15,15 +15,21 @@ const Experience = () => {
   return (
     <section className="c-space my-20" id="experience">
       <div className="w-full text-white-600">
-        <p className="head-text">My Work Experience</p>
+        <p className="grid-head-text text-3xl text-white-800">My Work Experience</p>
         <div className="work-container">
           <div className="work-canvas" style={{ width: '100%', height: '80vh' }}>
             <Canvas>
               <ambientLight intensity={6} />
               <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
               <directionalLight position={[10, 10, 10]} intensity={1} />
-              <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} autoRotate={true} // Enable auto-rotation
-            autoRotateSpeed={2.0}/>
+              <OrbitControls
+                enableZoom={false}          // Disable zooming
+                enablePan={false}          // Disable panning
+                enableRotate={false}       // Disable manual rotation
+                autoRotate={true}          // Enable auto-rotation
+                autoRotateSpeed={2.0}      // Control rotation speed
+                maxPolarAngle={Math.PI / 2} // Limit vertical rotation angle
+              />
               <Suspense fallback={<CanvasLoader />}>
                 <PerspectiveCamera
                   makeDefault

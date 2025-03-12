@@ -26,7 +26,8 @@ const Clients = () => {
 
   return (
     <section className="c-space my-20">
-      <h3 className="head-text">Insights from Clients & Colleagues</h3>
+            <p className=" grid-headtext text-2xl text-white-700 ">Testimonials</p>
+
 
       <div className={`client-container ${isVisible ? 'fade-in' : ''}`}>
         {clientReviews.map((item) => (
