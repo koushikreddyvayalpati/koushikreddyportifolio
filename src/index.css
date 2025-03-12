@@ -15,11 +15,11 @@ body {
 
 @layer utilities {
   .c-space {
-    @apply sm:px-10 px-5;
+    @apply sm:px-10 px-4;
   }
 
   .head-text {
-    @apply sm:text-4xl text-3xl font-semibold text-gray_gradient;
+    @apply sm:text-4xl text-2xl font-semibold text-gray_gradient;
   }
 
   .nav-ul {
@@ -353,6 +353,7 @@ body {
 .contact-form {
   flex: 1 1 35%; /* Takes up approximately 2/3 of the width */
   min-width: 300px; /* Ensures a minimum width for smaller screens */
+  margin-left: auto;
 }
 
 @media (max-width: 758px) {
