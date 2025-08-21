@@ -63,6 +63,15 @@ body {
   /* about section */
   .grid-container {
     @apply w-full h-full border border-black-300 bg-black-200 rounded-lg sm:p-7 p-4 flex flex-col gap-5;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .grid-container:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
   .grid-headtext {
@@ -70,7 +79,88 @@ body {
   }
 
   .grid-subtext {
-    @apply text-[#afb0b6] text-base font-generalsans;
+    @apply text-gray-400 leading-relaxed;
+  }
+
+  /* Professional card styling */
+  .professional-card {
+    @apply bg-gradient-to-br from-gray-900 to-black border border-gray-700 rounded-xl p-6 transition-all duration-300 hover:border-gray-500 hover:shadow-2xl hover:scale-105;
+    backdrop-filter: blur(10px);
+  }
+
+  .professional-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .professional-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Status indicators */
+  .status-online {
+    @apply w-3 h-3 bg-green-400 rounded-full animate-pulse;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+  }
+
+  .status-badge {
+    @apply inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-3 py-1 text-sm text-green-400 backdrop-blur-sm;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply border border-gray-600 hover:border-gray-400 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-white/5 backdrop-blur-sm;
+  }
+
+  /* Floating elements */
+  .floating-element {
+    @apply rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:scale-110;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Tech stack icons */
+  .tech-icon {
+    @apply transition-all duration-300 transform hover:scale-125 hover:rotate-12;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+
+  .tech-icon:hover {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4)) brightness(1.2);
+  }
+
+  /* Tech icon wrapper */
+  .tech-icon-wrapper {
+    @apply flex flex-col items-center gap-2 p-3 rounded-lg transition-all duration-300 hover:bg-white/5;
+  }
+
+  .tech-label {
+    @apply text-xs text-gray-400 font-medium text-center;
+  }
+
+  .tech-icon-wrapper:hover .tech-label {
+    @apply text-white;
   }
 
   .copy-container {
@@ -142,7 +232,15 @@ body {
   }
 
   .work-content_bar {
-    @apply flex-1 w-0.5 mt-4 h-full bg-black-300 group-hover:bg-black-500 group-last:hidden;
+    @apply flex-1 w-0.5 mt-4 h-full bg-black-300;
+  }
+  
+  .group:hover .work-content_bar {
+    @apply bg-black-500;
+  }
+  
+  .group:last-child .work-content_bar {
+    @apply hidden;
   }
 
   /* contact section */

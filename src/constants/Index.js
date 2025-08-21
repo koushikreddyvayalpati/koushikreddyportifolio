@@ -31,7 +31,7 @@ export const navLinks = [
       id: 1,
       name: 'Usha Sree Peketi',
       position: 'Master Student at SUNY Buffalo',
-      img: 'assets/upeketi.png',
+      img: '/assets/upeketi.png',
       review:
         "Koushik was an excellent collaborator during our master's project. He consistently demonstrated strong problem-solving skills and a deep understanding of the project requirements. His contributions were pivotal in delivering our goals, and he always maintained a positive and professional attitude. It was a pleasure working alongside him.",
     },
@@ -39,7 +39,7 @@ export const navLinks = [
       id: 2,
       name: 'Satyanand Singh',
       position: 'Engineering manager at IDFC',
-      img: 'satya.jpeg',
+      img: '/satya.jpeg',
       review:
         ' Koushik is a highly skilled developer who played a key role in developing new features for the payments mobile UI at IDFC First Bank. His technical expertise and dedication helped improve user experience. He collaborates effectively with the team and consistently delivers high-quality solutions. A valuable asset to any team, Koushiks contributions have made a lasting impact.'
     },
@@ -47,14 +47,14 @@ export const navLinks = [
       id: 3,
       name: 'Kalyan Reddy',
       position: 'Director at Adtycoons ',
-      img: 'Kalyanmama.jpg',
+      img: '/Kalyanmama.jpg',
       review:"Working with Koushik on our website development was an outstanding experience. He brought exceptional expertise in React.js, turning our vision into a seamless, user-friendly platform. His problem-solving skills, attention to detail, and commitment to delivering high-quality work were truly impressive.",
     },
     {
       id: 4,
       name: 'Mahesh Nayani',
       position: 'CEO of Smart Gig Technologies',
-      img: 'maheshnayani.png',
+      img: '/maheshnayani.png',
       review:
         'Collaborating with Koushik at Smartgig Technologies was a fantastic experience. He not only grasped our requirements with precision but also delivered a website that surpassed all expectations. His exceptional skills in both frontend and backend development set him apart as a standout professional.',
     },
@@ -62,34 +62,61 @@ export const navLinks = [
   
   export const myProjects = [
     {
-      title: 'BUILDING-BLOCK-CHAIN-AND-CRYPTOCURRENCY',
-      desc: 'Created a decentralized cryptocurrency solution in object-oriented Python for over 300 active user nodes, executing a proof-of-concept for real-world blockchain applications',
-      href: 'https://github.com/koushikreddyvayalpati/BUILDING-BLOCK-CHAIN-AND-CRYPTOCURRENCY',
-      spotlight: 'block.png',
+      title: 'TruStudSel - Student Selection Platform',
+      desc: 'A comprehensive TypeScript-based platform for student selection and management, featuring modern web technologies and user-friendly interfaces for educational institutions.',
+      href: 'https://tru-stud-sel-website.vercel.app/',
+      spotlight: '/truustudsel.png',
+      tech: ['TypeScript', 'React', 'Node.js'],
+      category: 'Full-Stack'
     },
     {
-      title: 'EFFICENT IMAGE-CAPTIONING',
-      desc: 'Developed a model that give captions to the image',
-      href: 'https://github.com/koushikreddyvayalpati/Image-captioning-using-VGG-INCEPTIONV3-RESNET-EFFICENT-BO',
-      spotlight: 'imagecaption.jpg',
+      title: 'TruStudSel Backend - Java Enterprise',
+      desc: 'Enterprise-grade Java backend system providing robust APIs and business logic for the student selection platform with Spring Boot and microservices architecture.',
+      href: 'https://github.com/koushikreddyvayalpati/TruStudSelBackend',
+      spotlight: '/edu.png',
+      tech: ['Java', 'Spring Boot', 'REST APIs'],
+      category: 'Backend'
     },
     {
-      title: 'ENHANCED-FINGER-PRINT-AUTHENTICATION',
-      desc: 'Developed a fingerprint recognition system that compares an input fingerprint with a database and identifies the owner by extracting and storing their minutiae features.',
-      href: 'https://github.com/koushikreddyvayalpati/ENHANCED-FINGER-PRINT-AUTHENTICATION',
-      spotlight: 'finger.jpg',
+      title: 'SchooloGPT Backend - Go Microservice',
+      desc: 'High-performance Go backend service leveraging modern microservices patterns and AI integration for educational technology solutions.',
+      href: 'https://github.com/koushikreddyvayalpati/schoologptbackend',
+      spotlight: '/schoolgpt.png',
+      tech: ['Go', 'Microservices', 'AI Integration'],
+      category: 'Backend'
     },
+    {
+      title: 'LinqCRM - Customer Relationship Management',
+      desc: 'Modern CRM solution built with HTML5 and advanced web technologies, providing comprehensive customer management and analytics capabilities.',
+      href: 'https://github.com/koushikreddyvayalpati/LinqCRMKoushik',
+      spotlight: '/vitlogo1.png',
+      tech: ['HTML5', 'CSS3', 'JavaScript'],
+      category: 'Web Application'
+    },
+    
     {
       title: 'MENTAL ILLNESS PREDICTION',
-      desc: 'Developed a model that predicts patients mentall illness considering various factors',
+      desc: 'Machine learning model that predicts mental illness patterns using advanced algorithms and data analysis techniques for healthcare applications.',
       href: 'https://github.com/koushikreddyvayalpati/Mental-Illness-Prediction',
       spotlight: '/mental.jpeg',
+      tech: ['Python', 'Machine Learning', 'Data Science'],
+      category: 'AI/ML'
     },
     {
-      title: 'EPASS-GENERATION-FOR-CROSSING-TOLLS',
-      desc: 'Developed a QR based toll System',
-      href: 'https://github.com/koushikreddyvayalpati/EPASS-GENERATION-FOR-CROSSING-TOLLS',
-      spotlight: 'toll.jpg',
+      title: 'ENHANCED FINGERPRINT AUTHENTICATION',
+      desc: 'Advanced biometric authentication system using fingerprint recognition with minutiae extraction and secure database storage for identity verification.',
+      href: 'https://github.com/koushikreddyvayalpati/ENHANCED-FINGER-PRINT-AUTHENTICATION',
+      spotlight: '/finger.jpg',
+      tech: ['Python', 'Computer Vision', 'Security'],
+      category: 'Security'
+    },
+    {
+      title: 'BUILDING BLOCKCHAIN AND CRYPTOCURRENCY',
+      desc: 'Decentralized cryptocurrency solution built with object-oriented Python, supporting over 300 active user nodes and real-world blockchain applications.',
+      href: 'https://github.com/koushikreddyvayalpati/BUILDING-BLOCK-CHAIN-AND-CRYPTOCURRENCY',
+      spotlight: '/block.png',
+      tech: ['Python', 'Blockchain', 'Cryptography'],
+      category: 'Blockchain'
     },
   ];
   
